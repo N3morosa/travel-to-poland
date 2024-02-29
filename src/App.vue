@@ -5,7 +5,10 @@ import TheNavigation from './components/TheNavigation.vue';
 
 <template>
   <TheNavigation />
-  <RouterView />
+  <div class="container mx-auto flex flex-row flex-wrap items-center py-5">
+    <RouterView />
+  </div>
+
 </template>
 
 <style scoped></style>
