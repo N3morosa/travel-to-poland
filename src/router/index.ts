@@ -3,7 +3,18 @@ import HomeView from '../views/HomeView.vue';
 
 const routes = [
   { path: '/', name: 'Home', component: HomeView },
-  { path: '/cities/:id/:slug', name: 'city', component: () => import('../views/ShowCityView.vue') },
+  {
+    path: '/city/:id/:slug',
+    name: 'city',
+    component: () => import('../views/ShowCityView.vue'),
+    props: true,
+  },
+  {
+    path: '/sight/:id/:slug/:sightSlug',
+    name: 'sight',
+    component: () => import('../views/ShowSightView.vue'),
+    props: true,
+  },
 ];
 
 const router = createRouter({

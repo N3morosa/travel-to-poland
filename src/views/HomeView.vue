@@ -9,7 +9,7 @@ const cities = ref(data.cities);
 <template>
   <RouterLink
     v-for="city in cities"
-    :to="{name: 'city', params: {id: city.id, slug: city.slug}}"
+    :to="{ name: 'city', params: { id: city.id, slug: city.slug } }"
     :key="city.id"
     class="py-10 px-5 basis-1/2"
   >
@@ -19,7 +19,7 @@ const cities = ref(data.cities);
     <img
       :src="`/images/${city.img}`"
       :alt="city.name"
-      class=""
+      class="shadow-gray-600 shadow-md"
     />
   </RouterLink>
 </template>

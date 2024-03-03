@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import data from '../data.json';
 import { onBeforeMount, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import SightsCards from '../components/SightsCards.vue';
 
-const route = useRoute();
+const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
+});
 
-const cityId = route.params.id as unknown;
 const city = ref();
 
 onBeforeMount(() => {
-  city.value = data.cities.find((city) => city.id == cityId);
+  city.value = data.cities.find((city) => city.id === parseInt(props.id));
 });
-
 </script>
 <template>
-  <article class="py-10">
+  <section class="py-10">
     <div class="flex flex-row flex-nowrap">
       <img
         :src="`/images/${city.img}`"
@@ -26,5 +29,15 @@ onBeforeMount(() => {
         <p>{{ city.description }}</p>
       </div>
     </div>
-  </article>
+  </section>
+  <section class="flex flex-row mt-10">
+    <h2 class="self-center">Best sights in {{ city.name }}</h2>
+    <RouterLink
+      v-for="sight in city.sights"
+      :key="sight.slug"
+      :to="{ name: 'sight', params: { sightSlug: sight.slug } }"
+    >
+      <SightsCards :sight="sight" />
+    </RouterLink>
+  </section>
 </template>
