@@ -2,6 +2,7 @@
 import data from '../data.json';
 import { onBeforeMount, ref } from 'vue';
 import SightsCards from '../components/SightsCards.vue';
+import BackButton from '../components/BackButton.vue';
 
 const props = defineProps({
   id: {
@@ -17,6 +18,7 @@ onBeforeMount(() => {
 });
 </script>
 <template>
+  <BackButton />
   <section class="py-10">
     <div class="flex flex-row flex-nowrap">
       <img
@@ -25,19 +27,21 @@ onBeforeMount(() => {
         class="w-2/5 mr-10"
       />
       <div class="w-3/5">
-        <h1 class="">{{ city.name }}</h1>
+        <h1>{{ city.name }}</h1>
         <p>{{ city.description }}</p>
       </div>
     </div>
   </section>
-  <section class="flex flex-row mt-10">
-    <h2 class="self-center">Best sights in {{ city.name }}</h2>
-    <RouterLink
-      v-for="sight in city.sights"
-      :key="sight.slug"
-      :to="{ name: 'sight', params: { sightSlug: sight.slug } }"
-    >
-      <SightsCards :sight="sight" />
-    </RouterLink>
+  <section class="mt-10">
+    <h2 class="text-center my-5">Best sights in {{ city.name }}</h2>
+    <div class="flex flex-row flex-nowrap">
+      <RouterLink
+        v-for="sight in city.sights"
+        :key="sight.slug"
+        :to="{ name: 'sight', params: { sightSlug: sight.slug } }"
+      >
+        <SightsCards :sight="sight" />
+      </RouterLink>
+    </div>
   </section>
 </template>

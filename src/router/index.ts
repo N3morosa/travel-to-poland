@@ -1,18 +1,18 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   { path: '/', name: 'Home', component: HomeView },
   {
     path: '/city/:id/:slug',
     name: 'city',
-    component: () => import('../views/ShowCityView.vue'),
+    component: () => import('../views/CityView.vue'),
     props: true,
   },
   {
     path: '/sight/:id/:slug/:sightSlug',
     name: 'sight',
-    component: () => import('../views/ShowSightView.vue'),
+    component: () => import('../views/SightView.vue'),
     props: true,
   },
 ];

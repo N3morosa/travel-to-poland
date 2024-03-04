@@ -6,7 +6,7 @@ const route = useRoute();
 
 <template>
   <TheNavigation />
-  <div class="container mx-auto flex flex-row flex-wrap items-center py-5">
+  <div class="container mx-auto my-20 flex flex-row flex-wrap items-center">
     <RouterView :key="route.path" />
   </div>
 </template>

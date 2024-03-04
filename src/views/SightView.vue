@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import data from '../data.json';
 import { ref, defineProps, onBeforeMount } from 'vue';
+import BackButton from '../components/BackButton.vue';
 
 const props = defineProps({
   id: {
@@ -24,12 +25,18 @@ onBeforeMount(() => {
 </script>
 
 <template>
+  <BackButton />
   <section class="py-10">
-    <h1>{{ sight.name }}</h1>
-    <img
-      :src="`/images/${sight.img}`"
-      alt="sight.name"
-    />
-    <p>{{ sight.description }}</p>
+    <div class="flex flex-row flex-nowrap">
+      <img
+        :src="`/images/${sight.img}`"
+        alt="sight.name"
+        class="w-2/5 mr-10"
+      />
+      <div class="w-3/5">
+        <h1>{{ sight.name }}</h1>
+        <p>{{ sight.description }}</p>
+      </div>
+    </div>
   </section>
 </template>
