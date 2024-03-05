@@ -6,8 +6,8 @@ const router = useRouter();
   <button
     type="button"
     @click="router.back()"
-    class="bg-pink-700 text-white rounded-md px-3"
+    class="bg-pink-700 text-white rounded-md px-5 py-1"
   >
-    <
+    <slot></slot>
   </button>
 </template>

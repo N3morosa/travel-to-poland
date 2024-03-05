@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import data from '../data.json';
+import appData from '../data.json';
 
-const cities = ref(data.cities);
+const cities = ref(appData.cities);
 </script>
 
 <template>
-  <nav class="flex justify-center bg-pink-700 p-5 text-white">
+  <nav class="fixed top-0 left-0 right-0 flex justify-center bg-pink-700 p-5 text-white">
     <RouterLink
       class="px-10 font-bold text-pink-200 hover:text-pink-300"
       to="/"

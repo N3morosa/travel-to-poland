@@ -6,9 +6,31 @@ const route = useRoute();
 
 <template>
   <TheNavigation />
-  <div class="container mx-auto my-20 flex flex-row flex-wrap items-center">
-    <RouterView :key="route.path" />
+  <div class="container mx-auto my-40 flex flex-row flex-wrap items-center">
+    <RouterView 
+      v-slot="{ Component }"
+      :key="route.path"
+    >
+      <Transition
+        name="fade" 
+        mode="out-in"
+      >
+        <component
+          :is="Component"
+        />
+      </Transition>
+    </RouterView>
   </div>
 </template>
 
-<style scoped></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

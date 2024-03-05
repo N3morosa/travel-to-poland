@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import data from '../data.json';
+import appData from '../data.json';
 import { ref, defineProps, onBeforeMount } from 'vue';
 import BackButton from '../components/BackButton.vue';
 
@@ -13,11 +13,11 @@ const props = defineProps({
     required: true,
   },
 });
-const city = ref();
-const sight = ref();
+const city = ref('');
+const sight = ref('');
 
 onBeforeMount(() => {
-  city.value = data.cities.find((city) => city.id === parseInt(props.id));
+  city.value = appData.cities.find((city) => city.id === parseInt(props.id));
   sight.value = city.value.sights.find(
     (sight) => sight.slug === props.sightSlug
   );
@@ -25,15 +25,15 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <BackButton />
+  <BackButton> < </BackButton>
   <section class="py-10">
-    <div class="flex flex-row flex-nowrap">
+    <div class="flex flex-col lg:flex-row flex-nowrap">
       <img
         :src="`/images/${sight.img}`"
         alt="sight.name"
-        class="w-2/5 mr-10"
+        class="lg:w-2/5 mr-10"
       />
-      <div class="w-3/5">
+      <div class="lg:w-3/5">
         <h1>{{ sight.name }}</h1>
         <p>{{ sight.description }}</p>
       </div>
